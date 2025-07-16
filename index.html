@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYM WORK - Премиальный тренажерный зал</title>
+    <style>
+        :root {
+            --primary: #ff5e00;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20%;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #e05500;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section {
+            padding: 5rem 10%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+        
+        .section-title span {
+            color: var(--primary);
+        }
+        
+        .about {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-images {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .about-images img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .about-images img:hover {
+            transform: scale(1.05);
+        }
+        
+        .facilities {
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .facility-card {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .facility-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .facility-card-content {
+            padding: 1.5rem;
+        }
+        
+        .facility-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .trainers {
+            text-align: center;
+        }
+        
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .trainer-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .trainer-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .trainer-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .trainer-card-content {
+            padding: 1.5rem;
+        }
+        
+        .trainer-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .trainer-card p {
+            color: var(--gray);
+            font-style: italic;
+        }
+        
+        .gallery {
+            background-color: #f1f1f1;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .contact {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .contact-info p {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .about, .contact {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 3rem 5%;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">GYM WORK</div>
+            <div class="nav-links">
+                <a href="#about">О нас</a>
+                <a href="#facilities">Оснащение</a>
+                <a href="#trainers">Тренеры</a>
+                <a href="#gallery">Галерея</a>
+                <a href="#contact">Контакты</a>
+                <a href="signup.html" class="btn">Записаться сейчас</a>
+            </div>
+        </nav>
+        
+        <div class="hero">
+            <h1>Превратите свое тело в шедевр</h1>
+            <p>GYM WORK - это не просто тренажерный зал, это место, где рождаются чемпионы. Современное оборудование, профессиональные тренеры и мотивирующая атмосфера помогут вам достичь любых целей.</p>
+            <a href="signup.html" class="btn">Записаться сейчас</a>
+        </div>
+    </header>
+    
+    <section id="about" class="section">
+        <h2 class="section-title">О <span>нас</span></h2>
+        <div class="about">
+            <div class="about-text">
+                <h3>Лучший тренажерный зал в городе</h3>
+                <p>GYM WORK был основан в 2010 году с целью создания идеального места для тренировок. Наша философия - индивидуальный подход к каждому клиенту, независимо от уровня подготовки.</p>
+                <p>Мы предлагаем:</p>
+                <ul>
+                    <li>Более 1000 кв.м. тренировочного пространства</li>
+                    <li>Современное оборудование от ведущих мировых производителей</li>
+                    <li>Зоны для функционального тренинга, кроссфита и кардио</li>
+                    <li>Профессиональных тренеров с международными сертификатами</li>
+                    <li>Спа-зону с сауной и массажным кабинетом</li>
+                </ul>
+            </div>
+            <div class="about-images">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тренажерный зал">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Кардио зона">
+                <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Зона свободных весов">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Функциональный тренинг">
+            </div>
+        </div>
+    </section>
+    
+    <section id="facilities" class="section facilities">
+        <h2 class="section-title">Наше <span>оснащение</span></h2>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тренажеры">
+                <div class="facility-card-content">
+                    <h3>Профессиональные тренажеры</h3>
+                    <p>Более 100 тренажеров от TechnoGym, Hammer Strength и Life Fitness для всех групп мышц.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Кардио зона">
+                <div class="facility-card-content">
+                    <h3>Кардио зона</h3>
+                    <p>Беговые дорожки, эллипсы, велотренажеры и гребные тренажеры с индивидуальными телевизорами.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Свободные веса">
+                <div class="facility-card-content">
+                    <h3>Зона свободных весов</h3>
+                    <p>Гантели до 50 кг, штанги, блины и оборудование для пауэрлифтинга и тяжелой атлетики.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Функциональный тренинг">
+                <div class="facility-card-content">
+                    <h3>Функциональный тренинг</h3>
+                    <p>TRX, канаты, гири, медицинские мячи и зона для кроссфит-тренировок.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Групповые занятия">
+                <div class="facility-card-content">
+                    <h3>Групповые занятия</h3>
+                    <p>Йога, пилатес, HIIT, танцевальные классы и многое другое в просторном зале.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <img src="https://images.unsplash.com/photo-1565992441121-4367c2967103?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Спа зона">
+                <div class="facility-card-content">
+                    <h3>Спа зона</h3>
+                    <p>Финская сауна, турецкий хамам, массажные кабинеты и зона отдыха после тренировки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="trainers" class="section trainers">
+        <h2 class="section-title">Наши <span>тренеры</span></h2>
+        <div class="trainers-grid">
+            <div class="trainer-card">
+                <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тренер Алексей">
+                <div class="trainer-card-content">
+                    <h3>Алексей Петров</h3>
+                    <p>Фитнес-тренер</p>
+                    <p>Специализация: коррекция фигуры, снижение веса</p>
+                </div>
+            </div>
+            <div class="trainer-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тренер Дмитрий">
+                <div class="trainer-card-content">
+                    <h3>Дмитрий Соколов</h3>
+                    <p>Тренер по бодибилдингу</p>
+                    <p>Специализация: набор мышечной массы</p>
+                </div>
+            </div>
+            <div class="trainer-card">
+                <img src="https://images.unsplash.com/photo-1518457900604-b6a0c67fbb1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тренер Ольга">
+                <div class="trainer-card-content">
+                    <h3>Ольга Иванова</h3>
+                    <p>Тренер по функциональному тренингу</p>
+                    <p>Специализация: кроссфит, HIIT</p>
+                </div>
+            </div>
+            <div class="trainer-card">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тренер Мария">
+                <div class="trainer-card-content">
+                    <h3>Мария Сидорова</h3>
+                    <p>Тренер по йоге и пилатесу</p>
+                    <p>Специализация: гибкость, осанка, реабилитация</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="gallery" class="section gallery">
+        <h2 class="section-title">Галере<span>я</span></h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тренажерный зал">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Кардио зона">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Зона свободных весов">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Функциональный тренинг">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Групповые занятия">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1565992441121-4367c2967103?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Спа зона">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тренировка">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1518457900604-b6a0c67fbb1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Тренировка">
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <h2 class="section-title">Свяжитесь с <span>нами</span></h2>
+        <div class="contact">
+            <div class="contact-info">
+                <h3>Адрес</h3>
+                <p>ул. Спортивная, 123, г. Москва</p>
+                
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 7:00 - 23:00</p>
+                <p>Сб-Вс: 9:00 - 21:00</p>
+                
+                <h3>Контакты</h3>
+                <p>Телефон: +7 (123) 456-78-90</p>
+                <p>Email: info@gymwork.ru</p>
+                
+                <h3>Социальные сети</h3>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">Telegram</a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 GYM WORK. Все права защищены.</p>
+    </footer>
+</body>
+</html>

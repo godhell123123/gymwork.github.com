@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись в GYM WORK</title>
+    <style>
+        :root {
+            --primary: #ff5e00;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        .signup-container {
+            max-width: 800px;
+            margin: 5rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .signup-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .signup-header h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .signup-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .signup-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            grid-column: span 2;
+            width: 200px;
+            margin: 0 auto;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e05500;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-header">
+            <h1>Запись в GYM WORK</h1>
+            <p>Заполните форму ниже, и наш менеджер свяжется с вами для уточнения деталей</p>
+        </div>
+        
+        <form class="signup-form" action="#" method="POST">
+            <div class="form-group">
+                <label for="first-name">Имя</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="last-name">Фамилия</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="program">Программа тренировок</label>
+                <select id="program" name="program" required>
+                    <option value="">Выберите программу</option>
+                    <option value="fitness">Фитнес</option>
+                    <option value="bodybuilding">Бодибилдинг</option>
+                    <option value="crossfit">Кроссфит</option>
+                    <option value="yoga">Йога</option>
+                    <option value="personal">Персональные тренировки</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="trainer">Предпочтительный тренер</label>
+                <select id="trainer" name="trainer">
+                    <option value="">Не важно</option>
+                    <option value="petrov">Алексей Петров</option>
+                    <option value="sokolov">Дмитрий Соколов</option>
+                    <option value="ivanova">Ольга Иванова</option>
+                    <option value="sidorova">Мария Сидорова</option>
+                </select>
+            </div>
+            
+            <div class="form-group full-width">
+                <label for="message">Дополнительная информация</label>
+                <textarea id="message" name="message" placeholder="Ваши цели, пожелания, удобное время для тренировок и т.д."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Отправить заявку</button>
+        </form>
+        
+        <a href="index.html" class="back-link">← Вернуться на главную</a>
+    </div>
+</body>
+</html>
